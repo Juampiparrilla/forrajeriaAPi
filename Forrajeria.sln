@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forrajeria.API", "Forrajeria.API\Forrajeria.API.csproj", "{FE0A8A63-8556-4117-A2D8-44ECD6E6F4FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forrajeria.API", "src\Forrajeria.API\Forrajeria.API.csproj", "{F1A3D3E2-67CF-3E3F-FF97-5E48B7714002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forrajeria.Domain", "src\Forrajeria.Domain\Forrajeria.Domain.csproj", "{C8705D9A-9A8D-4450-8DFB-AB7724FC9953}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE0A8A63-8556-4117-A2D8-44ECD6E6F4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE0A8A63-8556-4117-A2D8-44ECD6E6F4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE0A8A63-8556-4117-A2D8-44ECD6E6F4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE0A8A63-8556-4117-A2D8-44ECD6E6F4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A3D3E2-67CF-3E3F-FF97-5E48B7714002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A3D3E2-67CF-3E3F-FF97-5E48B7714002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A3D3E2-67CF-3E3F-FF97-5E48B7714002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A3D3E2-67CF-3E3F-FF97-5E48B7714002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8705D9A-9A8D-4450-8DFB-AB7724FC9953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8705D9A-9A8D-4450-8DFB-AB7724FC9953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8705D9A-9A8D-4450-8DFB-AB7724FC9953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8705D9A-9A8D-4450-8DFB-AB7724FC9953}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
