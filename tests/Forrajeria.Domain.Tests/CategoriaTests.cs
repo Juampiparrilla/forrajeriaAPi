@@ -8,67 +8,69 @@ namespace Forrajeria.Domain.Tests
         [Fact]
         public void CrearCategoria_CuandoElNombreEsVacio_DeberiaLanzarNombreCategoriaException()
         {
-            //Arrange
+            // Arrange
             string nombreCategoria = "";
-            //Act Assert 
-            Assert.Throws<NombreCategoriaException>(() => new Categoria(nombreCategoria));
+            // Act & Assert
+            Assert.Throws<NombreCategoriaException>(() =>
+                new Categoria(nombreCategoria));
         }
 
         [Fact]
         public void CrearCategoria_DeberiaCrearseActivaPorDefecto()
         {
-            //Arrange
+            // Arrange
             string nombreCategoria = "Alimentos";
-            //Act
+            // Act
             Categoria categoria = new Categoria(nombreCategoria);
-            //Assert
+            // Assert
             Assert.True(categoria.Activo);
         }
 
         [Fact]
         public void ModificarNombre_CuandoElNombreEsValido_DeberiaModificarElNombre()
         {
-            //Arrange
-            string nombreCategoria = "Alimentos";
-            Categoria categoria = new Categoria(nombreCategoria);
+            // Arrange
+            Categoria categoria = new Categoria("Alimentos");
             string nuevoNombre = "Bebidas";
-            //Act
+            // Act
             categoria.ModificarNombre(nuevoNombre);
-            //Assert
+            // Assert
             Assert.Equal(nuevoNombre, categoria.Nombre);
         }
 
         [Fact]
         public void ModificarNombre_CuandoElNombreEsVacio_DeberiaLanzarNombreCategoriaException()
         {
-            //Arrange
-            string nombreCategoria = "Alimentos";
-            Categoria categoria = new Categoria(nombreCategoria);
+            // Arrange
+            Categoria categoria = new Categoria("Alimentos");
             string nuevoNombre = "";
-            //Act Assert 
-            Assert.Throws<NombreCategoriaException>(() => categoria.ModificarNombre(nuevoNombre));
+            // Act & Assert
+            Assert.Throws<NombreCategoriaException>(() =>
+                categoria.ModificarNombre(nuevoNombre));
         }
+
         [Fact]
-        public void DesactivarCategoria_DeberiaCambiarActivoAFalse()
+        public void DesactivarCategoria_DeberiaCambiarActivoAFalso()
         {
-            //Arrange
-            string nombreCategoria = "Alimentos";
-            Categoria categoria = new Categoria(nombreCategoria);
-            //Act
+            // Arrange
+            Categoria categoria = new Categoria("Alimentos");
+            // Act
             categoria.Desactivar();
-            //Assert
+            // Assert
             Assert.False(categoria.Activo);
         }
+
         [Fact]
-        public void Activar_DeberiaCambiarActivoATrue()
+        public void ActivarCategoria_CuandoEstaInactiva_DeberiaCambiarActivoAVerdadero()
         {
-            //Arrange
-            string nombreCategoria = "Alimentos";
-            Categoria categoria = new Categoria(nombreCategoria);
-            //Act
+            // Arrange
+            Categoria categoria = new Categoria("Alimentos");
             categoria.Desactivar();
-            //Assert
-            Assert.False(categoria.Activo);
-        }       
+            // Act
+            categoria.Activar();
+
+            // Assert
+            Assert.True(categoria.Activo);
+        }
     }
 }

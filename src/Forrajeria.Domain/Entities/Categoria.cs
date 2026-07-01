@@ -10,12 +10,9 @@ namespace Forrajeria.Domain.Entities
 
         public Categoria(string nombre)
         {
-            if (string.IsNullOrWhiteSpace(nombre))
-            {
-                throw new NombreCategoriaException();
-            }
+            ValidarNombre(nombre);
             Nombre = nombre;
-            Activo = true; // Se crea como activo por defecto   
+            Activo = true;  
         }
 
         public void Activar()
@@ -29,11 +26,17 @@ namespace Forrajeria.Domain.Entities
 
         public void ModificarNombre(string nuevoNombre)
         {
-            if (string.IsNullOrWhiteSpace(nuevoNombre))
+            ValidarNombre(nuevoNombre);
+            Nombre = nuevoNombre;
+        }
+
+        private static void ValidarNombre(string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
             {
                 throw new NombreCategoriaException();
             }
-            Nombre = nuevoNombre;
         }
+
     }
 }
