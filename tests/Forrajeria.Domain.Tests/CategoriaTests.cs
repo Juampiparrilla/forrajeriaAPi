@@ -16,6 +16,27 @@ namespace Forrajeria.Domain.Tests
         }
 
         [Fact]
+        public void CrearCategoria_CuandoElNombreEsSoloEspacios_DeberiaLanzarNombreCategoriaException()
+        {
+            // Act & Assert
+            Assert.Throws<NombreCategoriaException>(() =>
+                new Categoria("   "));
+        }
+
+        [Fact]
+        public void CrearCategoria_CuandoElNombreEsValido_DeberiaGuardarElNombre()
+        {
+            // Arrange
+            string nombreCategoria = "Alimentos";
+
+            // Act
+            Categoria categoria = new Categoria(nombreCategoria);
+
+            // Assert
+            Assert.Equal(nombreCategoria, categoria.Nombre);
+        }
+
+        [Fact]
         public void CrearCategoria_DeberiaCrearseActivaPorDefecto()
         {
             // Arrange

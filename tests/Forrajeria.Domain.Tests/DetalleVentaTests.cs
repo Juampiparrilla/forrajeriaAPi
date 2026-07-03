@@ -54,7 +54,7 @@ namespace Forrajeria.Domain.Tests
         }
 
         [Fact]
-        public void CrearDetalleVenta_DeberiaGuardarLaPresentacion()
+        public void CrearDetalleVenta_DeberiaGuardarElPresentacionProductoId()
         {
             // Arrange
             Producto producto = new Producto("Balanceado");
@@ -66,11 +66,13 @@ namespace Forrajeria.Domain.Tests
                 50000,
                 30);
 
+            EntidadTestHelper.AsignarId(presentacion, 10);
+
             // Act
             DetalleVenta detalle = new DetalleVenta(presentacion, 2);
 
             // Assert
-            Assert.Equal(presentacion, detalle.PresentacionProducto);
+            Assert.Equal(10, detalle.PresentacionProductoId);
         }
 
         [Fact]
@@ -174,6 +176,92 @@ namespace Forrajeria.Domain.Tests
             // Assert
             Assert.NotEqual(presentacion.PrecioVenta, detalle.PrecioUnitario);
             Assert.Equal(65000, detalle.PrecioUnitario);
+        }
+
+        [Fact]
+        public void AumentarCantidad_CuandoLaCantidadEsValida_DeberiaIncrementarLaCantidadAVender()
+        {
+            // Arrange
+            Producto producto = new Producto("Balanceado");
+
+            PresentacionProducto presentacion = new PresentacionProducto(
+                producto,
+                UnidadMedida.Bolsa,
+                25,
+                50000,
+                30);
+
+            DetalleVenta detalle = new DetalleVenta(presentacion, 2);
+
+            // Act
+            detalle.AumentarCantidad(3);
+
+            // Assert
+            Assert.Equal(5, detalle.CantidadAVender);
+            Assert.Equal(325000, detalle.Subtotal);
+        }
+
+        [Fact]
+        public void AumentarCantidad_CuandoLaCantidadEsInvalida_DeberiaLanzarCantidadInvalidaException()
+        {
+            // Arrange
+            Producto producto = new Producto("Balanceado");
+
+            PresentacionProducto presentacion = new PresentacionProducto(
+                producto,
+                UnidadMedida.Bolsa,
+                25,
+                50000,
+                30);
+
+            DetalleVenta detalle = new DetalleVenta(presentacion, 2);
+
+            // Act & Assert
+            Assert.Throws<CantidadInvalidaException>(() =>
+                detalle.AumentarCantidad(0));
+        }
+
+        [Fact]
+        public void DisminuirCantidad_CuandoLaCantidadEsValida_DeberiaReducirLaCantidadAVender()
+        {
+            // Arrange
+            Producto producto = new Producto("Balanceado");
+
+            PresentacionProducto presentacion = new PresentacionProducto(
+                producto,
+                UnidadMedida.Bolsa,
+                25,
+                50000,
+                30);
+
+            DetalleVenta detalle = new DetalleVenta(presentacion, 5);
+
+            // Act
+            detalle.DisminuirCantidad(2);
+
+            // Assert
+            Assert.Equal(3, detalle.CantidadAVender);
+            Assert.Equal(195000, detalle.Subtotal);
+        }
+
+        [Fact]
+        public void DisminuirCantidad_CuandoLaCantidadEsInvalida_DeberiaLanzarCantidadInvalidaException()
+        {
+            // Arrange
+            Producto producto = new Producto("Balanceado");
+
+            PresentacionProducto presentacion = new PresentacionProducto(
+                producto,
+                UnidadMedida.Bolsa,
+                25,
+                50000,
+                30);
+
+            DetalleVenta detalle = new DetalleVenta(presentacion, 5);
+
+            // Act & Assert
+            Assert.Throws<CantidadInvalidaException>(() =>
+                detalle.DisminuirCantidad(-1));
         }
     }
 }

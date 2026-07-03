@@ -17,6 +17,24 @@ namespace Forrajeria.Domain.Tests
         }
 
         [Fact]
+        public void CrearProducto_CuandoElNombreEsSoloEspacios_DeberiaLanzarProductoNombreVacioException()
+        {
+            // Act & Assert
+            Assert.Throws<ProductoNombreVacioException>(() =>
+                new Producto("   "));
+        }
+
+        [Fact]
+        public void CrearProducto_CuandoElNombreEsValido_DeberiaGuardarElNombre()
+        {
+            // Act
+            Producto producto = new Producto("Balanceado");
+
+            // Assert
+            Assert.Equal("Balanceado", producto.Nombre);
+        }
+
+        [Fact]
         public void CrearProducto_DeberiaCrearseActivoPorDefecto()
         {
             // Arrange
@@ -68,6 +86,29 @@ namespace Forrajeria.Domain.Tests
             // Act & Assert
             Assert.Throws<ProductoNombreVacioException>(() =>
                 producto.ModificarNombre(""));
+        }
+
+        [Fact]
+        public void ValidarQueEsteActivo_CuandoElProductoEstaActivo_NoDeberiaLanzarExcepcion()
+        {
+            // Arrange
+            Producto producto = new Producto("Balanceado");
+
+            // Act & Assert
+            Exception? excepcion = Record.Exception(() => producto.ValidarQueEsteActivo());
+            Assert.Null(excepcion);
+        }
+
+        [Fact]
+        public void ValidarQueEsteActivo_CuandoElProductoEstaInactivo_DeberiaLanzarProductoInactivoException()
+        {
+            // Arrange
+            Producto producto = new Producto("Balanceado");
+            producto.Desactivar();
+
+            // Act & Assert
+            Assert.Throws<ProductoInactivoException>(() =>
+                producto.ValidarQueEsteActivo());
         }
 
     }
