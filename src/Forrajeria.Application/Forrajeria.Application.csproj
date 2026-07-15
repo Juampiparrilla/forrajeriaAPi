@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Forrajeria.Domain\Forrajeria.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Categorias\Queries\" />
+  </ItemGroup>
+
 </Project>

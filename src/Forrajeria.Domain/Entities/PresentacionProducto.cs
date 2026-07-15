@@ -15,7 +15,10 @@ namespace Forrajeria.Domain.Entities
         public decimal PrecioVenta => PrecioCompra * (1 + MargenGanancia / 100);
         public string DescripcionPresentacion => $"{Producto.Nombre} - {CantidadUnidad} {UnidadMedida}";
 
-
+        protected PresentacionProducto()
+        {
+            
+        }
         public PresentacionProducto(Producto producto, UnidadMedida unidadMedida, decimal cantidadUnidad, decimal precioCompra, decimal margenGanancia)
         {
             ValidarProducto(producto);

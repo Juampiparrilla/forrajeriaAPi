@@ -8,6 +8,10 @@ namespace Forrajeria.Domain.Entities
         public string Nombre { get; private set; }
         public bool Activo { get; private set; }
 
+        protected Producto()
+        {
+
+        }
         public Producto(string nombre)
         {
             ValidarNombre(nombre);

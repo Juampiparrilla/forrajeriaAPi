@@ -10,6 +10,11 @@ namespace Forrajeria.Domain.Entities
         public decimal CantidadAVender { get; private set; }
         public decimal PrecioUnitario { get; private set; }
         public decimal Subtotal => PrecioUnitario * CantidadAVender;
+
+        protected DetalleVenta()
+        {
+            
+        }
         public DetalleVenta(PresentacionProducto presentacionProducto, decimal cantidadAVender)
         {
             ValidarPresentacionProducto(presentacionProducto);
@@ -41,6 +46,10 @@ namespace Forrajeria.Domain.Entities
         public void DisminuirCantidad(decimal cantidad)
         {
             ValidarCantidad(cantidad);
+
+            if (CantidadAVender - cantidad <= 0)
+                throw new CantidadInvalidaException();
+
             CantidadAVender -= cantidad;
         }
     }

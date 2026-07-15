@@ -26,3 +26,6 @@ namespace Forrajeria.Application.Categorias.Commands
 
     }
 }
+
+
+

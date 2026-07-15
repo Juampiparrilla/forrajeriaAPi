@@ -1,0 +1,23 @@
+﻿using Forrajeria.Application.Interfaces;
+using Forrajeria.Infrastructure.Persistence;
+using Forrajeria.Infrastructure.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Forrajeria.Infrastructure
+{
+    public static class DependencyInjection
+    {
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<ForrajeriaDbContext>(options =>
+               options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+
+            return services;
+        }
+    }
+}

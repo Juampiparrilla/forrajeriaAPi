@@ -7,7 +7,10 @@ namespace Forrajeria.Domain.Entities
         public int Id { get; private set; }
         public string Nombre { get; private set; }
         public bool Activo { get; private set; }
-
+        protected Categoria()
+        {
+            
+        }
         public Categoria(string nombre)
         {
             ValidarNombre(nombre);

@@ -14,11 +14,11 @@ namespace Forrajeria.Domain.Entities
         public DateTime? FechaCancelacion { get; private set; }
         public decimal Descuento { get; private set; }
         public EstadoVenta Estado { get; private set; }
-        public decimal Total => _detalles.Sum(x => x.Subtotal) - Descuento;
+        public decimal Total => _detalles.Sum(x => x.Subtotal) - Descuento;       
         public Venta()
         {
             Estado = EstadoVenta.Pendiente;
-            FechaCreacion = DateTime.Now;
+            FechaCreacion = DateTime.UtcNow;
             Descuento = 0;
         }
         public void AgregarDetalle(PresentacionProducto presentacion, decimal cantidad)
