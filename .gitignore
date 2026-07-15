@@ -20,3 +20,5 @@ obj/
 
 # NuGet
 packages/
+
+appsettings.Development.json
