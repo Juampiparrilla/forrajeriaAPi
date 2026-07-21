@@ -1,5 +1,7 @@
-﻿using Forrajeria.Application.Interfaces;
+﻿using Forrajeria.Application.Categorias.Commands.EditCategoria;
+using Forrajeria.Application.Interfaces;
 using Forrajeria.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forrajeria.Infrastructure.Persistence.Repositories
 {
@@ -17,6 +19,25 @@ namespace Forrajeria.Infrastructure.Persistence.Repositories
                 throw new ArgumentNullException(nameof(categoria));
 
             await _context.Categorias.AddAsync(categoria, cancellationToken);
+        }       
+        public async Task<List<Categoria>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await _context.Categorias
+                            .AsNoTracking()
+                            .ToListAsync(cancellationToken);
         }
+
+        public Task<Categoria?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return _context.Categorias                
+                 .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+        }
+
+        public Task<Categoria?> GetByIdAsNoTrackingAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return _context.Categorias
+                 .AsNoTracking()
+                 .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+        }        
     }
 }

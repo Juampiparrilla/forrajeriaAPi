@@ -1,7 +1,7 @@
 ﻿using Forrajeria.Application.Interfaces;
 using Forrajeria.Domain.Entities;
 
-namespace Forrajeria.Application.Categorias.Commands
+namespace Forrajeria.Application.Categorias.Commands.CrearCategoria
 {
     public class CrearCategoriaHandler
     {
@@ -17,6 +17,9 @@ namespace Forrajeria.Application.Categorias.Commands
 
         public async Task<CrearCategoriaResponse> Handle(CrearCategoriaCommand command, CancellationToken cancellationToken)
         {
+            if (command == null)
+                throw new ArgumentNullException(nameof(command));
+
             var categoria = new Categoria(command.Nombre);
 
             await _repository.AddAsync(categoria, cancellationToken);

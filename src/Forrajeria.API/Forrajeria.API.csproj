@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Forrajeria.Application\Forrajeria.Application.csproj" />
     <ProjectReference Include="..\Forrajeria.Infrastructure\Forrajeria.Infrastructure.csproj" />
   </ItemGroup>

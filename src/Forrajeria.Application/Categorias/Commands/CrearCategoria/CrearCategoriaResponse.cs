@@ -1,4 +1,4 @@
-﻿namespace Forrajeria.Application.Categorias.Commands
+﻿namespace Forrajeria.Application.Categorias.Commands.CrearCategoria
 {
     public class CrearCategoriaResponse
     {

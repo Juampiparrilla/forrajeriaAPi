@@ -1,4 +1,5 @@
 using Forrajeria.Infrastructure;
+using Forrajeria.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add the correct using directive for the AddApplication extension method if it exists in your solution.
+// For example, if AddApplication is defined in the Forrajeria.Application namespace, add:
+
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
