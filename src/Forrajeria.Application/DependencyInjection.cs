@@ -13,12 +13,10 @@ public static class DependencyInjection
     public static IServiceCollection AddApplication(
         this IServiceCollection services)
     {
-        services.AddScoped<CrearCategoriaHandler>();
-        services.AddScoped<ListarCategoriasHandler>();
-        services.AddScoped<ObtenerCategoriaPorIdHandler>();
-        services.AddScoped<EditarCategoriaHandler>();
-        services.AddScoped<DesactivarCategoriaHandler>();
-        services.AddScoped<ActivarCategoriaHandler>();
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+        });
 
         return services;
     }

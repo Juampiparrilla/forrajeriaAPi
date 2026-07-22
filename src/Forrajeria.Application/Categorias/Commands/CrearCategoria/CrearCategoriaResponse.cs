@@ -1,7 +1,6 @@
 ﻿namespace Forrajeria.Application.Categorias.Commands.CrearCategoria
 {
-    public class CrearCategoriaResponse
+    public record CrearCategoriaResponse(int Id)
     {
-        public int Id { get; set; }
     }
 }

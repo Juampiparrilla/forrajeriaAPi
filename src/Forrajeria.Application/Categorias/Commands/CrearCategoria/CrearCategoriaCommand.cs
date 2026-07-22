@@ -1,11 +1,7 @@
-﻿namespace Forrajeria.Application.Categorias.Commands
+﻿using Forrajeria.Application.Categorias.Commands.CrearCategoria;
+using MediatR;
+
+namespace Forrajeria.Application.Categorias.Commands
 {
-    public class CrearCategoriaCommand
-    {
-        public string Nombre { get;}
-        public CrearCategoriaCommand(string nombre)
-        {
-            Nombre = nombre;
-        }
-    }
+    public record CrearCategoriaCommand(string Nombre) : IRequest<CrearCategoriaResponse>;
 }

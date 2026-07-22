@@ -1,15 +1,16 @@
 ﻿using Forrajeria.Application.Interfaces;
 using Forrajeria.Domain.Entities;
+using MediatR;
 
-namespace Forrajeria.Application.Categorias.Commands.CrearCategoria
+namespace Forrajeria.Application.Categorias.Commands.CrearCategoria 
 {
-    public class CrearCategoriaHandler
+    public class CrearCategoriaCommandHandler : IRequestHandler<CrearCategoriaCommand, CrearCategoriaResponse> 
     {
         private readonly ICategoriaRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public CrearCategoriaHandler(ICategoriaRepository repository, IUnitOfWork unitOfWork)
+        public CrearCategoriaCommandHandler(ICategoriaRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
@@ -24,7 +25,7 @@ namespace Forrajeria.Application.Categorias.Commands.CrearCategoria
 
             await _repository.AddAsync(categoria, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
-            return new CrearCategoriaResponse { Id = categoria.Id };
+            return new CrearCategoriaResponse (categoria.Id);
         }
 
     }

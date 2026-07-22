@@ -1,17 +1,18 @@
 ﻿using Forrajeria.Application.Interfaces;
+using MediatR;
 
 namespace Forrajeria.Application.Categorias.Queries.ListarCategorias
 {
-    public class ListarCategoriasHandler
+    public class ListarCategoriasQueryHandler : IRequestHandler<ListarCategoriasQuery, List<ListarCategoriasResponse>>
     {
         private readonly ICategoriaRepository _repository;
-        public ListarCategoriasHandler(ICategoriaRepository repository)
+        public ListarCategoriasQueryHandler(ICategoriaRepository repository)
         {
             _repository = repository;
         }
 
 
-        public async Task<List<ListarCategoriasResponse>> Handle(CancellationToken cancellationToken)
+        public async Task<List<ListarCategoriasResponse>> Handle(ListarCategoriasQuery query, CancellationToken cancellationToken)
         {
             var categorias = await _repository.GetAllAsync(cancellationToken);
 
