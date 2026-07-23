@@ -16,6 +16,7 @@ namespace Forrajeria.Infrastructure
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IProductoRepository, ProductoRepository>();
 
             return services;
         }
