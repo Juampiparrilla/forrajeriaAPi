@@ -23,5 +23,10 @@ public class ProductoConfiguration : IEntityTypeConfiguration<Producto>
 
         builder.HasIndex(p => p.Nombre)
             .IsUnique();
+
+        builder.HasOne(p => p.Categoria)
+            .WithMany(c => c.Productos)
+            .HasForeignKey(p => p.CategoriaId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

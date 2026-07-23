@@ -5,6 +5,8 @@ namespace Forrajeria.Domain.Entities
 {
     public class PresentacionProducto
     {
+        private readonly List<DetalleVenta> _detallesVenta = new();
+        public IReadOnlyCollection<DetalleVenta> DetallesVenta => _detallesVenta;
         public int Id { get; private set; }
         public int ProductoId { get; private set; }
         public Producto Producto { get; private set; }

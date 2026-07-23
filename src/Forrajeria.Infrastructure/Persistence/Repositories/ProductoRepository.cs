@@ -23,19 +23,20 @@ namespace Forrajeria.Infrastructure.Persistence.Repositories
         public async Task<List<Producto>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             return await _context.Productos
+                  .Include(p => p.Categoria)
                   .AsNoTracking()
                   .ToListAsync(cancellationToken);
         }
         public Task<Producto?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
             return _context.Productos
-                .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
         }
 
         public Task<Producto?> GetByIdAsNoTrackingAsync(int id, CancellationToken cancellationToken = default)
         {
             return _context.Productos
+                .Include(p => p.Categoria)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
         }

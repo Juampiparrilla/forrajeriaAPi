@@ -1,5 +1,5 @@
 ﻿namespace Forrajeria.Application.Productos.Queries.ListarProductos
 {
-    public record ListarProductosResponse(int Id, string Nombre, bool Activo);
+    public record ListarProductosResponse(int Id, string Nombre, bool Activo, int CategoriaId, string CategoriaNombre);
 
 }

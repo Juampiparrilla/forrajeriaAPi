@@ -26,7 +26,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_CuandoUnidadMedidaEsInvalida_DeberiaLanzarUnidadMedidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act & Assert
             Assert.Throws<UnidadMedidaException>(() =>
@@ -42,7 +42,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_CuandoCantidadEsMenorOIgualACero_DeberiaLanzarCantidadInvalidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act & Assert
             Assert.Throws<CantidadInvalidaException>(() =>
@@ -58,7 +58,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_CuandoCantidadEsNegativa_DeberiaLanzarCantidadInvalidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act & Assert
             Assert.Throws<CantidadInvalidaException>(() =>
@@ -74,7 +74,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_CuandoPrecioCompraEsNegativo_DeberiaLanzarPrecioInvalidoException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act & Assert
             Assert.Throws<PrecioInvalidoException>(() =>
@@ -90,7 +90,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_CuandoMargenEsNegativo_DeberiaLanzarMargenGananciaInvalidoException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act & Assert
             Assert.Throws<MargenGananciaInvalidoException>(() =>
@@ -106,7 +106,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_DeberiaGuardarLaUnidadMedida()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act
             PresentacionProducto presentacion = new PresentacionProducto(
@@ -124,7 +124,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_DeberiaCalcularCorrectamenteElPrecioVenta()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act
             PresentacionProducto presentacion = new PresentacionProducto(
@@ -142,7 +142,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearPresentacionProducto_DeberiaGenerarLaDescripcionPresentacion()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             // Act
             PresentacionProducto presentacion = new PresentacionProducto(
@@ -160,7 +160,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarPrecioCompra_DeberiaActualizarElPrecioCompra()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -180,7 +180,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarPrecioCompra_DeberiaRecalcularElPrecioVenta()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -200,7 +200,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarPrecioCompra_CuandoPrecioEsNegativo_DeberiaLanzarPrecioInvalidoException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -218,7 +218,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarMargenGanancia_DeberiaActualizarElMargen()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -238,7 +238,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarMargenGanancia_DeberiaRecalcularElPrecioVenta()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -258,7 +258,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarMargenGanancia_CuandoMargenEsNegativo_DeberiaLanzarMargenGananciaInvalidoException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = new Producto("Balanceado", EntidadTestHelper.CrearCategoria());
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,

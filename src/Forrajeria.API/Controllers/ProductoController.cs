@@ -1,7 +1,6 @@
 ﻿using Forrajeria.Application.Productos.Commands.ActivarProducto;
 using Forrajeria.Application.Productos.Commands.CrearProducto;
 using Forrajeria.Application.Productos.Commands.DesactivarProducto;
-using Forrajeria.Application.Productos.Commands.ValidarQueEsteActivo;
 using Forrajeria.Application.Productos.Queries.ListarProductos;
 using Forrajeria.Application.Productos.Queries.ObtenerProductoPorId;
 using MediatR;
@@ -59,14 +58,6 @@ namespace Forrajeria.API.Controllers
         {
             await _mediator.Send(new ActivarProductoCommand(id), cancellationToken);
             return NoContent();
-        }
-
-        [HttpPut("{id:int}/validar-activo")]
-        public async Task<IActionResult> ValidarQueEsteActivo(int id, CancellationToken cancellationToken)
-        {
-            await _mediator.Send(new ValidarQueEsteActivoCommand(id), cancellationToken);
-            return NoContent();
-        }
-
+        }   
     }
 }

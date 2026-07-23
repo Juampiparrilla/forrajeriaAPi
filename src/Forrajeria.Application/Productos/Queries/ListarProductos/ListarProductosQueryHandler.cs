@@ -22,7 +22,9 @@ namespace Forrajeria.Application.Productos.Queries.ListarProductos
             return ListaProductos.Select(p => new ListarProductosResponse(
                                                             p.Id,
                                                             p.Nombre,
-                                                            p.Activo
+                                                            p.Activo,
+                                                            p.CategoriaId,
+                                                            p.Categoria?.Nombre ?? string.Empty
                                                         )).ToList();
         }
     }

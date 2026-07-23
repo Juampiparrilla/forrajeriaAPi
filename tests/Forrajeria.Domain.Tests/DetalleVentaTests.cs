@@ -21,7 +21,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_CuandoLaCantidadEsCero_DeberiaLanzarCantidadInvalidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -39,7 +39,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_CuandoLaCantidadEsNegativa_DeberiaLanzarCantidadInvalidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -57,7 +57,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_DeberiaGuardarElPresentacionProductoId()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -79,7 +79,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_DeberiaGuardarLaDescripcionDeLaPresentacion()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -99,7 +99,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_DeberiaGuardarElPrecioUnitarioActual()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -119,7 +119,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_DeberiaGuardarLaCantidadAVender()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -139,7 +139,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_DeberiaCalcularCorrectamenteElSubtotal()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -159,7 +159,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearDetalleVenta_DeberiaGuardarUnSnapshotDelPrecio()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -182,7 +182,7 @@ namespace Forrajeria.Domain.Tests
         public void AumentarCantidad_CuandoLaCantidadEsValida_DeberiaIncrementarLaCantidadAVender()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -205,7 +205,7 @@ namespace Forrajeria.Domain.Tests
         public void AumentarCantidad_CuandoLaCantidadEsInvalida_DeberiaLanzarCantidadInvalidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -225,7 +225,7 @@ namespace Forrajeria.Domain.Tests
         public void DisminuirCantidad_CuandoLaCantidadEsValida_DeberiaReducirLaCantidadAVender()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,
@@ -248,7 +248,7 @@ namespace Forrajeria.Domain.Tests
         public void DisminuirCantidad_CuandoLaCantidadEsInvalida_DeberiaLanzarCantidadInvalidaException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             PresentacionProducto presentacion = new PresentacionProducto(
                 producto,

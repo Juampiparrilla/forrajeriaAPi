@@ -27,5 +27,10 @@ public class PresentacionProductoConfiguration
             .WithMany()
             .HasForeignKey(p => p.ProductoId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasMany(p => p.DetallesVenta)
+            .WithOne(d => d.PresentacionProducto)
+            .HasForeignKey(d => d.PresentacionProductoId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

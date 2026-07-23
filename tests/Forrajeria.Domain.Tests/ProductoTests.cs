@@ -13,7 +13,7 @@ namespace Forrajeria.Domain.Tests
             string nombre = "";
             // Act & Assert
             Assert.Throws<ProductoNombreVacioException>(() =>
-                new Producto(nombre));
+                new Producto(nombre, EntidadTestHelper.CrearCategoria()));
         }
 
         [Fact]
@@ -21,14 +21,22 @@ namespace Forrajeria.Domain.Tests
         {
             // Act & Assert
             Assert.Throws<ProductoNombreVacioException>(() =>
-                new Producto("   "));
+                new Producto("   ", EntidadTestHelper.CrearCategoria()));
+        }
+
+        [Fact]
+        public void CrearProducto_CuandoLaCategoriaEsNull_DeberiaLanzarCategoriaVaciaException()
+        {
+            // Act & Assert
+            Assert.Throws<CategoriaVaciaException>(() =>
+                new Producto("Balanceado", null!));
         }
 
         [Fact]
         public void CrearProducto_CuandoElNombreEsValido_DeberiaGuardarElNombre()
         {
             // Act
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             // Assert
             Assert.Equal("Balanceado", producto.Nombre);
@@ -38,7 +46,7 @@ namespace Forrajeria.Domain.Tests
         public void CrearProducto_DeberiaCrearseActivoPorDefecto()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
             // Assert
             Assert.True(producto.Activo);
         }
@@ -47,7 +55,7 @@ namespace Forrajeria.Domain.Tests
         public void DesactivarProducto_DeberiaCambiarActivoAFalso()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
             // Act
             producto.Desactivar();
             // Assert
@@ -58,7 +66,7 @@ namespace Forrajeria.Domain.Tests
         public void ActivarProducto_CuandoEstaInactivo_DeberiaCambiarActivoAVerdadero()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
             producto.Desactivar();
             // Act
             producto.Activar();
@@ -70,7 +78,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarNombre_CuandoNombreEsValido_DeberiaActualizarNombre()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
             string nuevoNombre = "Balanceado Adulto";
             // Act
             producto.ModificarNombre(nuevoNombre);
@@ -82,7 +90,7 @@ namespace Forrajeria.Domain.Tests
         public void ModificarNombre_CuandoNombreEsVacio_DeberiaLanzarProductoNombreVacioException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
             // Act & Assert
             Assert.Throws<ProductoNombreVacioException>(() =>
                 producto.ModificarNombre(""));
@@ -92,7 +100,7 @@ namespace Forrajeria.Domain.Tests
         public void ValidarQueEsteActivo_CuandoElProductoEstaActivo_NoDeberiaLanzarExcepcion()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
 
             // Act & Assert
             Exception? excepcion = Record.Exception(() => producto.ValidarQueEsteActivo());
@@ -103,7 +111,7 @@ namespace Forrajeria.Domain.Tests
         public void ValidarQueEsteActivo_CuandoElProductoEstaInactivo_DeberiaLanzarProductoInactivoException()
         {
             // Arrange
-            Producto producto = new Producto("Balanceado");
+            Producto producto = EntidadTestHelper.CrearProducto("Balanceado");
             producto.Desactivar();
 
             // Act & Assert

@@ -4,6 +4,8 @@ namespace Forrajeria.Domain.Entities
 {
     public class Categoria
     {
+        private readonly List<Producto> _productos = new();
+        public IReadOnlyCollection<Producto> Productos => _productos;
         public int Id { get; private set; }
         public string Nombre { get; private set; }
         public bool Activo { get; private set; }

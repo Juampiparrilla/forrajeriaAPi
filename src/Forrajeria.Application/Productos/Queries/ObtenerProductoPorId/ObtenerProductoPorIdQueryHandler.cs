@@ -26,7 +26,9 @@ namespace Forrajeria.Application.Productos.Queries.ObtenerProductoPorId
             return new ObtenerProductoPorIdResponse(
                 producto?.Id ?? 0,
                 producto?.Nombre ?? string.Empty,
-                producto?.Activo ?? false
+                producto?.Activo ?? false,
+                producto?.CategoriaId ?? 0,
+                producto?.Categoria?.Nombre ?? string.Empty
             );
 
         }

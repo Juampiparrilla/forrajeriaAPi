@@ -6,6 +6,7 @@ namespace Forrajeria.Domain.Entities
     {
         public int Id { get; private set; }
         public int PresentacionProductoId { get; private set; }
+        public PresentacionProducto PresentacionProducto { get; private set; }
         public string DescripcionPresentacion { get; private set; }
         public decimal CantidadAVender { get; private set; }
         public decimal PrecioUnitario { get; private set; }
@@ -20,6 +21,7 @@ namespace Forrajeria.Domain.Entities
             ValidarPresentacionProducto(presentacionProducto);
             ValidarCantidad(cantidadAVender);
 
+            PresentacionProducto = presentacionProducto;
             PresentacionProductoId = presentacionProducto.Id;
             DescripcionPresentacion = presentacionProducto.DescripcionPresentacion;
             PrecioUnitario = presentacionProducto.PrecioVenta;

@@ -1,3 +1,4 @@
+using Forrajeria.Domain.Entities;
 using System.Reflection;
 
 namespace Forrajeria.Domain.Tests
@@ -10,6 +11,17 @@ namespace Forrajeria.Domain.Tests
                 ?? throw new InvalidOperationException($"La entidad {entidad.GetType().Name} no tiene propiedad Id.");
 
             propiedad.SetValue(entidad, id);
+        }
+
+        public static Categoria CrearCategoria(string nombre = "Forrajes")
+        {
+            return new Categoria(nombre);
+        }
+
+        public static Producto CrearProducto(string nombre = "Balanceado", Categoria? categoria = null)
+        {
+            categoria ??= CrearCategoria();
+            return new Producto(nombre, categoria);
         }
     }
 }

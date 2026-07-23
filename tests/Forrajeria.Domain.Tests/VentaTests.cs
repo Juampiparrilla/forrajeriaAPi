@@ -9,7 +9,7 @@ namespace Forrajeria.Domain.Tests
         private static PresentacionProducto CrearPresentacion(int id, string nombre = "Balanceado", decimal precioCompra = 50000, decimal margen = 30)
         {
             var presentacion = new PresentacionProducto(
-                new Producto(nombre),
+                EntidadTestHelper.CrearProducto(nombre),
                 UnidadMedida.Bolsa,
                 25,
                 precioCompra,
