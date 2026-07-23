@@ -2,7 +2,7 @@
 
 
 
-Backend desarrollado con ASP.NET Core utilizando Clean Architecture.
+Backend desarrollado con ASP.NET Core utilizando Clean Architecture, CQRS y principios de Domain-Driven Design (DDD).
 
 
 
@@ -12,19 +12,41 @@ Backend desarrollado con ASP.NET Core utilizando Clean Architecture.
 
 \- Aplicar Clean Architecture
 
-\- Practicar SOLID
+\- Aplicar principios SOLID
 
-\- Implementar Entity Framework Core
+\- Implementar CQRS con MediatR
 
-\- Implementar JWT
+\- Modelar un dominio rico (Rich Domain Model)
 
-\- Aplicar patrones de diseño
+\- Implementar Entity Framework Core con PostgreSQL
 
 \- Escribir pruebas unitarias
 
+\- Implementar autenticación JWT
+
 \- Utilizar Docker
 
-\- Aplicar CQRS (más adelante)
+\- Aplicar buenas prácticas y patrones de diseño
+
+
+
+\## Tecnologías
+
+
+
+\- .NET 8
+
+\- ASP.NET Core Web API
+
+\- Entity Framework Core
+
+\- PostgreSQL (Npgsql)
+
+\- MediatR
+
+\- Swagger / OpenAPI
+
+\- xUnit
 
 
 
@@ -32,13 +54,75 @@ Backend desarrollado con ASP.NET Core utilizando Clean Architecture.
 
 
 
-\- ASP.NET Core Web API
+El proyecto sigue una arquitectura basada en Clean Architecture.
 
-\- Domain
 
-\- Application
 
-\- Infrastructure
+```
+
+Forrajeria.API
+
+&#x20;       │
+
+&#x20;       ▼
+
+Forrajeria.Application
+
+&#x20;       │
+
+&#x20;       ▼
+
+Forrajeria.Domain
+
+
+
+Forrajeria.Infrastructure
+
+&#x20;       ▲
+
+&#x20;       │
+
+&#x20;       └──────────── API
+
+```
+
+
+
+\### Capas
+
+
+
+\- \*\*Domain:\*\* entidades, reglas de negocio, excepciones y enums.
+
+\- \*\*Application:\*\* casos de uso (Commands, Queries, Handlers), interfaces y CQRS.
+
+\- \*\*Infrastructure:\*\* Entity Framework Core, repositorios, Unit of Work y persistencia.
+
+\- \*\*API:\*\* controladores, configuración de servicios y exposición de endpoints REST.
+
+
+
+\## Características implementadas
+
+
+
+\-  Clean Architecture
+
+\-  CQRS con MediatR
+
+\-  Repository Pattern
+
+\-  Unit of Work
+
+\-  Rich Domain Model
+
+\-  Entity Framework Core
+
+\-  PostgreSQL
+
+\-  Swagger
+
+\-  Pruebas unitarias del dominio
 
 
 
@@ -46,5 +130,9 @@ Backend desarrollado con ASP.NET Core utilizando Clean Architecture.
 
 
 
-\- En desarrollo.
+En desarrollo.
+
+
+
+Actualmente se encuentran implementados los casos de uso de \*\*Categorías\*\* y \*\*Productos\*\*. El siguiente objetivo es continuar con las entidades \*\*PresentaciónProducto\*\*, \*\*Venta\*\* y \*\*DetalleVenta\*\*, además de incorporar autenticación JWT, manejo global de excepciones y Docker.
 
