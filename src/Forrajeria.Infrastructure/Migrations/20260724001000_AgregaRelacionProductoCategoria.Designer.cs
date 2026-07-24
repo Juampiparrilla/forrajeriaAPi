@@ -3,6 +3,7 @@ using System;
 using Forrajeria.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Forrajeria.Infrastructure.Migrations
 {
     [DbContext(typeof(ForrajeriaDbContext))]
-    partial class ForrajeriaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260724001000_AgregaRelacionProductoCategoria")]
+    partial class AgregaRelacionProductoCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
