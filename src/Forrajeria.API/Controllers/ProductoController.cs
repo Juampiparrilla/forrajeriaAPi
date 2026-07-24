@@ -1,6 +1,7 @@
 ﻿using Forrajeria.Application.Productos.Commands.ActivarProducto;
 using Forrajeria.Application.Productos.Commands.CrearProducto;
 using Forrajeria.Application.Productos.Commands.DesactivarProducto;
+using Forrajeria.Application.Productos.Commands.EditarProducto;
 using Forrajeria.Application.Productos.Queries.ListarProductos;
 using Forrajeria.Application.Productos.Queries.ObtenerProductoPorId;
 using MediatR;
@@ -40,10 +41,10 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Editar(CrearProductoCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> Editar(int id, EditarProductoRequest request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(command, cancellationToken);
-            return Ok(response);
+            await _mediator.Send(new EditarProductoCommand(id, request.Nombre), cancellationToken);
+            return NoContent();
         }
 
         [HttpPut("{id:int}/desactivar")]

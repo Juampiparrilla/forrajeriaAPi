@@ -15,10 +15,10 @@ namespace Forrajeria.Application.Productos.Commands.EditarProducto
         }
         public async Task<Unit> Handle(EditarProductoCommand command, CancellationToken cancellationToken)
         {
-            var producto = await _repository.GetByIdAsync(command.Id);
+            var producto = await _repository.GetByIdAsync(command.Id, cancellationToken);
             if (producto == null)
             {
-                throw new Exception($"La categoría con ID {command.Id} no existe.");
+                throw new Exception($"El producto con ID {command.Id} no existe.");
             }
             producto.ModificarNombre(command.Nombre);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
