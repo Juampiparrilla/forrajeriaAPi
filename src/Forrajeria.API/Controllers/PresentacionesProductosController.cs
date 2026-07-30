@@ -3,11 +3,13 @@ using Forrajeria.Application.PresentacionesProductos.Commands.EditarPresentacion
 using Forrajeria.Application.PresentacionesProductos.Queries.ListarPresentacionesProductos;
 using Forrajeria.Application.PresentacionesProductos.Queries.ObtenerPresentacionProductoPorId;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forrajeria.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class PresentacionesProductosController : ControllerBase
     {

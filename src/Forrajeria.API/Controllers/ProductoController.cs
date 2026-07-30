@@ -5,11 +5,13 @@ using Forrajeria.Application.Productos.Commands.EditarProducto;
 using Forrajeria.Application.Productos.Queries.ListarProductos;
 using Forrajeria.Application.Productos.Queries.ObtenerProductoPorId;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forrajeria.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class ProductoController : ControllerBase
     {

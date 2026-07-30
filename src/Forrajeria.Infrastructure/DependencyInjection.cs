@@ -22,6 +22,7 @@ namespace Forrajeria.Infrastructure
             services.AddScoped<IVentaRepository, VentaRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IJwtProvider, JwtProvider>();
 
             return services;
         }

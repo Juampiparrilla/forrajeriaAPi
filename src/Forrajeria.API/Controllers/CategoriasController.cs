@@ -5,11 +5,13 @@ using Forrajeria.Application.Categorias.Commands.EditCategoria;
 using Forrajeria.Application.Categorias.Queries.ListarCategorias;
 using Forrajeria.Application.Categorias.Queries.ObtenerCategoriaPorId;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forrajeria.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class CategoriasController : ControllerBase
     {

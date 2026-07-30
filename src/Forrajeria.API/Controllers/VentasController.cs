@@ -7,11 +7,13 @@ using Forrajeria.Application.Ventas.Commands.EliminarDetalleVenta;
 using Forrajeria.Application.Ventas.Queries.ListarVentas;
 using Forrajeria.Application.Ventas.Queries.ObtenerVentaPorId;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forrajeria.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class VentasController : ControllerBase
     {
