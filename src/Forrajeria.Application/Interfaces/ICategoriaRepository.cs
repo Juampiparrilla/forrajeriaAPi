@@ -1,5 +1,4 @@
-﻿using Forrajeria.Application.Categorias.Commands.EditCategoria;
-using Forrajeria.Domain.Entities;
+﻿using Forrajeria.Domain.Entities;
 
 namespace Forrajeria.Application.Interfaces
 {
