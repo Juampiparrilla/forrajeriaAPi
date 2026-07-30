@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.Conflict
 {
-    public class VentaNoModificableException : Exception
+    public class VentaNoModificableException : ConflictException
     {
         public VentaNoModificableException() : base("La venta no puede ser modificada.")
         {

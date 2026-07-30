@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.BusinessRules
 {
-    public class NombreCategoriaException : Exception
+    public class NombreCategoriaException : BusinessRuleException
     {
         public NombreCategoriaException() : base("El nombre de la categoría no puede estar vacío.")
         {

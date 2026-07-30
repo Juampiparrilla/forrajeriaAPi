@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.Conflict
 {
-    public class VentaCanceladaException : Exception
+    public class VentaCanceladaException : ConflictException
     {
         public VentaCanceladaException() : base("La venta ha sido cancelada.")
         {

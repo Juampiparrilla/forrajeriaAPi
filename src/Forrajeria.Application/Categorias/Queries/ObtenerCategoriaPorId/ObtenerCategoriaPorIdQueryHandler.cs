@@ -1,4 +1,5 @@
 ﻿using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Categorias.Queries.ObtenerCategoriaPorId
@@ -16,7 +17,7 @@ namespace Forrajeria.Application.Categorias.Queries.ObtenerCategoriaPorId
             
             if (categoria == null)
             {
-                throw new Exception($"No se encontró la categoría con ID {query.Id}");
+                throw new NotFoundException($"No se encontró la categoría con ID {query.Id}");
             }
 
             return new ObtenerCategoriaPorIdResponse(

@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Ventas.Queries.ObtenerVentaPorId
@@ -18,7 +19,7 @@ namespace Forrajeria.Application.Ventas.Queries.ObtenerVentaPorId
 
             if (venta == null)
             {
-                throw new Exception($"No se encontró la venta con ID {query.Id}");
+                throw new NotFoundException($"No se encontró la venta con ID {query.Id}");
             }
 
             var detalles = venta.Detalles.Select(d => new DetalleVentaResponse(

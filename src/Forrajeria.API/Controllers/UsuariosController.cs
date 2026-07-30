@@ -40,6 +40,6 @@ namespace Forrajeria.API.Controllers
         {
             var response = await _mediator.Send(command, cancellationToken);
             return Ok(response);
-        }        
+        }       
     }
 }

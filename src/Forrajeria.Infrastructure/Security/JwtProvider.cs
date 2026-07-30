@@ -10,6 +10,7 @@ namespace Forrajeria.Infrastructure.Security
 {
     internal class JwtProvider : IJwtProvider
     {
+        // Cambiar este acoplamiento por JwtOptions
         private readonly IConfiguration _config;
         public JwtProvider(IConfiguration config)
         {

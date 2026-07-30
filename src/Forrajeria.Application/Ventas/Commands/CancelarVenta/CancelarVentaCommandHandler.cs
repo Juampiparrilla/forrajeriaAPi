@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Ventas.Commands.CancelarVenta
@@ -19,7 +20,7 @@ namespace Forrajeria.Application.Ventas.Commands.CancelarVenta
             var venta = await _ventaRepository.GetByIdAsync(command.Id, cancellationToken);
             if (venta == null)
             {
-                throw new Exception($"La venta con ID {command.Id} no existe.");
+                throw new NotFoundException($"La venta con ID {command.Id} no existe.");
             }
 
             venta.Cancelar();

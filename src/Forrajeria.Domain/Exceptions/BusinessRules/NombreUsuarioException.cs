@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.BusinessRules
 {
-    public class NombreUsuarioException : Exception
+    public class NombreUsuarioException : BusinessRuleException
     {
         public NombreUsuarioException() : base("El nombre de usuario no puede estar vacío.")
         {

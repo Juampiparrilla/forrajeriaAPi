@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.NotFound
 {
-    public class DetalleNoEncontradoException : Exception
+    public class DetalleNoEncontradoException : NotFoundException
     {
         public DetalleNoEncontradoException() : base("El detalle no fue encontrado.")
         {

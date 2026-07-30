@@ -1,4 +1,5 @@
 ﻿using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Categorias.Commands.EditCategoria
@@ -18,7 +19,7 @@ namespace Forrajeria.Application.Categorias.Commands.EditCategoria
             var categoria = await _categoriaRepository.GetByIdAsync(command.Id, cancellationToken);
             if (categoria == null)
             {
-                throw new Exception($"La categoría con ID {command.Id} no existe.");
+                throw new NotFoundException($"La categoría con ID {command.Id} no existe.");
             }
             categoria.ModificarNombre(command.Nombre);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

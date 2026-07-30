@@ -1,6 +1,8 @@
 ﻿using Forrajeria.Domain.Entities;
 using Forrajeria.Domain.Enums;
-using Forrajeria.Domain.Exceptions;
+using Forrajeria.Domain.Exceptions.BusinessRules;
+using Forrajeria.Domain.Exceptions.Conflict;
+using Forrajeria.Domain.Exceptions.NotFound;
 
 namespace Forrajeria.Domain.Tests
 {

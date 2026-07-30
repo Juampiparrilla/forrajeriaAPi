@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.Conflict
 {
-    public class StockInsuficienteException : Exception
+    public class StockInsuficienteException : ConflictException
     {
         public StockInsuficienteException() : base("El stock actual es insuficiente para realizar la venta.")
         {

@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.PresentacionesProductos.Commands.EditarPresentacionProducto
@@ -19,7 +20,7 @@ namespace Forrajeria.Application.PresentacionesProductos.Commands.EditarPresenta
             var presentacionProducto = await _repository.GetByIdAsync(command.Id, cancellationToken);
             if (presentacionProducto == null)
             {
-                throw new Exception($"La presentación de producto con ID {command.Id} no existe.");
+                throw new NotFoundException($"La presentación de producto con ID {command.Id} no existe.");
             }
 
             presentacionProducto.ModificarPrecioCompra(command.PrecioCompra);

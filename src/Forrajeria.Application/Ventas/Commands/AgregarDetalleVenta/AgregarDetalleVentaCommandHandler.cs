@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Ventas.Commands.AgregarDetalleVenta
@@ -24,13 +25,13 @@ namespace Forrajeria.Application.Ventas.Commands.AgregarDetalleVenta
             var venta = await _ventaRepository.GetByIdAsync(command.VentaId, cancellationToken);
             if (venta == null)
             {
-                throw new Exception($"La venta con ID {command.VentaId} no existe.");
+                throw new NotFoundException($"La venta con ID {command.VentaId} no existe.");
             }
 
             var presentacionProducto = await _presentacionProductoRepository.GetByIdAsync(command.PresentacionProductoId, cancellationToken);
             if (presentacionProducto == null)
             {
-                throw new Exception($"La presentación de producto con ID {command.PresentacionProductoId} no existe.");
+                throw new NotFoundException($"La presentación de producto con ID {command.PresentacionProductoId} no existe.");
             }
 
             venta.AgregarDetalle(presentacionProducto, command.Cantidad);

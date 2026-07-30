@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Productos.Commands.DesactivarProducto
@@ -19,7 +20,7 @@ namespace Forrajeria.Application.Productos.Commands.DesactivarProducto
             var producto = await _productoRepository.GetByIdAsync(command.Id, cancellationToken);
             if (producto == null)
             {
-                throw new Exception($"El producto con ID {command.Id} no existe.");
+                throw new NotFoundException($"El producto con ID {command.Id} no existe.");
             }
 
             producto.Desactivar();

@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.Conflict
 {
-    public class ProductoInactivoException : Exception
+    public class ProductoInactivoException : ConflictException
     {
         public ProductoInactivoException() : base("El producto se encuentra inactivo.")
         {

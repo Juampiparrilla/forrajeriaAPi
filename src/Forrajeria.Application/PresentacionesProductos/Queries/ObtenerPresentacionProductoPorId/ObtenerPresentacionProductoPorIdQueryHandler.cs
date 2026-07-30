@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.PresentacionesProductos.Queries.ObtenerPresentacionProductoPorId
@@ -18,7 +19,7 @@ namespace Forrajeria.Application.PresentacionesProductos.Queries.ObtenerPresenta
 
             if (presentacionProducto == null)
             {
-                throw new Exception($"No se encontró la presentación de producto con ID {query.Id}");
+                throw new NotFoundException($"No se encontró la presentación de producto con ID {query.Id}");
             }
 
             return new ObtenerPresentacionProductoPorIdResponse(

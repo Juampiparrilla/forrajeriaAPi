@@ -1,5 +1,5 @@
 ﻿using Forrajeria.Domain.Entities;
-using Forrajeria.Domain.Exceptions;
+using Forrajeria.Domain.Exceptions.BusinessRules;
 
 namespace Forrajeria.Domain.Tests
 {

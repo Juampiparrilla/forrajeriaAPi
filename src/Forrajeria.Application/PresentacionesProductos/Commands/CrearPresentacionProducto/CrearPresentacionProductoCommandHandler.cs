@@ -1,5 +1,6 @@
 using Forrajeria.Application.Interfaces;
 using Forrajeria.Domain.Entities;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.PresentacionesProductos.Commands.CrearPresentacionProducto
@@ -28,7 +29,7 @@ namespace Forrajeria.Application.PresentacionesProductos.Commands.CrearPresentac
             var producto = await _productoRepository.GetByIdAsync(command.ProductoId, cancellationToken);
             if (producto == null)
             {
-                throw new Exception($"El producto con ID {command.ProductoId} no existe.");
+                throw new NotFoundException($"El producto con ID {command.ProductoId} no existe.");
             }
 
             var presentacionProducto = new PresentacionProducto(

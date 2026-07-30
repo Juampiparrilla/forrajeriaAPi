@@ -1,5 +1,6 @@
 ﻿using Forrajeria.Application.Interfaces;
 using Forrajeria.Domain.Entities;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Productos.Commands.CrearProducto
@@ -28,7 +29,7 @@ namespace Forrajeria.Application.Productos.Commands.CrearProducto
             var categoria = await _categoriaRepository.GetByIdAsync(command.CategoriaId, cancellationToken);
             if (categoria == null)
             {
-                throw new Exception("La categoría no existe.");
+                throw new NotFoundException("La categoría no existe.");
             }
 
             var producto = new Producto(command.Nombre, categoria);

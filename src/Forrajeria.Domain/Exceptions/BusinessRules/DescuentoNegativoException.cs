@@ -1,6 +1,8 @@
-﻿namespace Forrajeria.Domain.Exceptions
+﻿using Forrajeria.Domain.Exceptions.Common;
+
+namespace Forrajeria.Domain.Exceptions.BusinessRules
 {
-    public class DescuentoNegativoException : Exception
+    public class DescuentoNegativoException : BusinessRuleException
     {
         public DescuentoNegativoException() : base("El descuento no puede ser negativo.")
         {

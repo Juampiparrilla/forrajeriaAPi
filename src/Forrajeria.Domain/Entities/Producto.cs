@@ -1,4 +1,5 @@
-﻿using Forrajeria.Domain.Exceptions;
+﻿using Forrajeria.Domain.Exceptions.BusinessRules;
+using Forrajeria.Domain.Exceptions.Conflict;
 
 namespace Forrajeria.Domain.Entities
 {

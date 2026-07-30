@@ -1,4 +1,5 @@
 using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Usuarios.Commands.Login
@@ -21,12 +22,12 @@ namespace Forrajeria.Application.Usuarios.Commands.Login
             var usuario = await _usuarioRepository.GetByEmailAsync(request.Email, cancellationToken);
             if (usuario == null || !_passwordHasher.Verify(request.Password, usuario.PasswordHash))
             {
-                throw new Exception("Email o contraseña inválidos.");
+                throw new UnauthorizedException("Email o contraseña inválidos.");
             }
 
             if (!usuario.Activo)
             {
-                throw new Exception("El usuario está inactivo.");
+                throw new BusinessRuleException("El usuario está inactivo.");
             }
 
             var token = _jwtProvider.GenerarToken(usuario);

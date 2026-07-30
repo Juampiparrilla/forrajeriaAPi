@@ -1,4 +1,5 @@
 ﻿using Forrajeria.Application.Interfaces;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Productos.Commands.EditarProducto
@@ -18,7 +19,7 @@ namespace Forrajeria.Application.Productos.Commands.EditarProducto
             var producto = await _repository.GetByIdAsync(command.Id, cancellationToken);
             if (producto == null)
             {
-                throw new Exception($"El producto con ID {command.Id} no existe.");
+                throw new NotFoundException($"El producto con ID {command.Id} no existe.");
             }
             producto.ModificarNombre(command.Nombre);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

@@ -1,6 +1,6 @@
 ﻿using Forrajeria.Application.Interfaces;
 using Forrajeria.Domain.Entities;
-using Forrajeria.Domain.Exceptions;
+using Forrajeria.Domain.Exceptions.Common;
 using MediatR;
 
 namespace Forrajeria.Application.Usuarios.Commands.CrearUsuario
@@ -24,7 +24,7 @@ namespace Forrajeria.Application.Usuarios.Commands.CrearUsuario
             var usuarioExistente = await _usuarioRepository.GetByEmailAsync(request.Email, cancellationToken);
             if (usuarioExistente != null)
             {
-                throw new EmailUsuarioException("Ya existe un usuario registrado con ese email.");
+                throw new ConflictException("Ya existe un usuario registrado con ese email.");
             }
 
             var passwordHash = _passwordHasher.Hash(request.Password);
