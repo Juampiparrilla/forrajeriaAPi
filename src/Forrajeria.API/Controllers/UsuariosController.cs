@@ -1,5 +1,7 @@
 ﻿using Forrajeria.API.Authorization;
+using Forrajeria.Application.Usuarios.Commands.ActivarUsuario;
 using Forrajeria.Application.Usuarios.Commands.CrearUsuario;
+using Forrajeria.Application.Usuarios.Commands.DesactivarUsuario;
 using Forrajeria.Application.Usuarios.Commands.Login;
 using Forrajeria.Application.Usuarios.Queries.ListarUsuarios;
 using MediatR;
@@ -41,6 +43,22 @@ namespace Forrajeria.API.Controllers
         {
             var response = await _mediator.Send(command, cancellationToken);
             return Ok(response);
-        }       
+        }
+
+        [HttpPut("{id:int}/activar")]
+        [Authorize(Policy = Policies.PuedeGestionarUsuarios)]
+        public async Task<IActionResult> ActivarUsuario(int id, CancellationToken cancellationToken)
+        {
+            await _mediator.Send(new ActivarUsuarioCommand(id), cancellationToken);
+            return NoContent();
+        }
+
+        [HttpPut("{id:int}/desactivar")]
+        [Authorize(Policy = Policies.PuedeGestionarUsuarios)]
+        public async Task<IActionResult> DesactivarUsuario(int id, CancellationToken cancellationToken)
+        {
+            await _mediator.Send(new DesactivarUsuarioCommand(id), cancellationToken);
+            return NoContent();
+        }
     }
 }
