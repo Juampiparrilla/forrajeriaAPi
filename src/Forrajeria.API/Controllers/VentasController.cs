@@ -1,3 +1,4 @@
+using Forrajeria.API.Authorization;
 using Forrajeria.Application.Ventas.Commands.AgregarDetalleVenta;
 using Forrajeria.Application.Ventas.Commands.AplicarDescuentoVenta;
 using Forrajeria.Application.Ventas.Commands.CancelarVenta;
@@ -13,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Forrajeria.API.Controllers
 {
     [ApiController]
-    [Authorize]
+    [Authorize(Policy = Policies.PuedeGestionarVentas)]
     [Route("api/[controller]")]
     public class VentasController : ControllerBase
     {

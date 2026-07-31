@@ -1,3 +1,4 @@
+using Forrajeria.API.Authorization;
 using Forrajeria.Application.PresentacionesProductos.Commands.CrearPresentacionProducto;
 using Forrajeria.Application.PresentacionesProductos.Commands.EditarPresentacionProducto;
 using Forrajeria.Application.PresentacionesProductos.Queries.ListarPresentacionesProductos;
@@ -20,6 +21,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = Policies.PuedeGestionarPresentaciones)]
         public async Task<IActionResult> Crear(CrearPresentacionProductoCommand command, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(command, cancellationToken);
@@ -27,6 +29,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = Policies.PuedeVerPresentaciones)]
         public async Task<IActionResult> ListarPresentacionesProductos(CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new ListarPresentacionesProductosQuery(), cancellationToken);
@@ -34,6 +37,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Policy = Policies.PuedeVerPresentaciones)]
         public async Task<IActionResult> ObtenerPresentacionProductoPorId(int id, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new ObtenerPresentacionProductoPorIdQuery(id), cancellationToken);
@@ -41,6 +45,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Policy = Policies.PuedeGestionarPresentaciones)]
         public async Task<IActionResult> EditarPresentacionProducto(int id, EditarPresentacionProductoRequest request, CancellationToken cancellationToken)
         {
             await _mediator.Send(new EditarPresentacionProductoCommand(id, request.PrecioCompra, request.MargenGanancia), cancellationToken);

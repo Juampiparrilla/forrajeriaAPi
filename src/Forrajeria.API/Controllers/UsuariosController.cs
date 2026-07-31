@@ -1,10 +1,10 @@
-﻿using Forrajeria.Application.Usuarios.Commands.CrearUsuario;
+﻿using Forrajeria.API.Authorization;
+using Forrajeria.Application.Usuarios.Commands.CrearUsuario;
 using Forrajeria.Application.Usuarios.Commands.Login;
 using Forrajeria.Application.Usuarios.Queries.ListarUsuarios;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Forrajeria.API.Controllers
 {
@@ -19,8 +19,8 @@ namespace Forrajeria.API.Controllers
             _mediator = mediator;
         }
 
-        [AllowAnonymous]
         [HttpPost]
+        [Authorize(Policy = Policies.PuedeGestionarUsuarios)]
         public async Task<IActionResult> Crear(CrearUsuarioCommand command, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(command, cancellationToken);
@@ -28,6 +28,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = Policies.PuedeGestionarUsuarios)]
         public async Task<IActionResult> ListarUsuarios(CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new ListarUsuariosQuery(), cancellationToken);

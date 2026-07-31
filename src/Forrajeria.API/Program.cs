@@ -1,9 +1,8 @@
-using Forrajeria.Infrastructure;
-using Forrajeria.Application;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Forrajeria.API.Authentication;
+using Forrajeria.API.Authorization;
 using Forrajeria.API.Middlewares;
+using Forrajeria.Application;
+using Forrajeria.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,25 +19,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
-            ValidIssuer = builder.Configuration["JWT:Issuer"],
-            ValidAudience = builder.Configuration["JWT:Audience"],
-
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]!)
-            )
-        };
-    });
+builder.Services.AddApiAuthorization();
 
 var app = builder.Build();
 
@@ -54,6 +37,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();

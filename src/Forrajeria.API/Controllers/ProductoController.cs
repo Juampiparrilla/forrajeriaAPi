@@ -1,4 +1,5 @@
-﻿using Forrajeria.Application.Productos.Commands.ActivarProducto;
+﻿using Forrajeria.API.Authorization;
+using Forrajeria.Application.Productos.Commands.ActivarProducto;
 using Forrajeria.Application.Productos.Commands.CrearProducto;
 using Forrajeria.Application.Productos.Commands.DesactivarProducto;
 using Forrajeria.Application.Productos.Commands.EditarProducto;
@@ -22,6 +23,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = Policies.PuedeGestionarProductos)]
         public async Task<IActionResult> Crear(CrearProductoCommand command, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(command, cancellationToken);
@@ -29,6 +31,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = Policies.PuedeVerProductos)]
         public async Task<IActionResult> ListarProductos(CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new ListarProductosQuery(), cancellationToken);
@@ -36,6 +39,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Policy = Policies.PuedeVerProductos)]
         public async Task<IActionResult> ObtenerProductsPorId(int id, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new ObtenerProductoPorIdQuery(id), cancellationToken);
@@ -43,6 +47,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Policy = Policies.PuedeGestionarProductos)]
         public async Task<IActionResult> Editar(int id, EditarProductoRequest request, CancellationToken cancellationToken)
         {
             await _mediator.Send(new EditarProductoCommand(id, request.Nombre), cancellationToken);
@@ -50,6 +55,7 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPut("{id:int}/desactivar")]
+        [Authorize(Policy = Policies.PuedeGestionarProductos)]
         public async Task<IActionResult> DesactivarProducto(int id, CancellationToken cancellationToken)
         {
             await _mediator.Send(new DesactivarProductoCommand(id), cancellationToken);
@@ -57,10 +63,11 @@ namespace Forrajeria.API.Controllers
         }
 
         [HttpPut("{id:int}/activar")]
+        [Authorize(Policy = Policies.PuedeGestionarProductos)]
         public async Task<IActionResult> ActivarProducto(int id, CancellationToken cancellationToken)
         {
             await _mediator.Send(new ActivarProductoCommand(id), cancellationToken);
             return NoContent();
-        }   
+        }
     }
 }
